@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import InfoBox from "./InfoBox";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+   constructor(){
+     super()
+     this.state={style:"primary"}
+   }
+
+
+
+
+   changeStyle=(data)=>{
+     this.setState({style:data});
+   }
+
+
+  render(){
+    return (
+      <div className="container">
+        <div>
+           <h2 className="title is-3">Change Card Style : </h2>
+           <button className="button is-primary" onClick={()=>this.changeStyle("primary")}>Primary</button>
+           <button className="button is-danger" onClick={()=>this.changeStyle("danger")}>Denger</button>
+        </div>
+        <InfoBox  />
+      </div>
+    )
+  }
 }
 
 export default App;
