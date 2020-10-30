@@ -1,9 +1,26 @@
-import React from 'react'
+import React from "react";
+import StyleContext from "./context";
+import TextContext from "./TextContext";
 
-function Button (){
+function Button() {
   return (
-      <button type="btn" className="button is-primary">Submit</button>
-  )
+    <StyleContext.Consumer>
+      {(value) => {
+        return (
+          <button
+            type="button"
+            className={`btn ${
+              value === "primary" ? "btn-primary" : "btn-danger"
+            }`}
+          >
+            <TextContext.Consumer>
+              {(value) => (value === "primary" ? "Submit" : "Delete")}
+            </TextContext.Consumer>
+          </button>
+        );
+      }}
+    </StyleContext.Consumer>
+  );
 }
 
 export default Button;
